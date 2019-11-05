@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Measure</string>
+    <string name="app_name">Safety Pressure Formula</string>
     <string-array name="units">
         <item>cm</item>
         <item>mm</item>

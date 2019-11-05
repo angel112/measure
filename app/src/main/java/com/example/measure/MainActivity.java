@@ -22,6 +22,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(form1Intent);
             }
         });
+
+        Button btnForm2 = (Button) findViewById(R.id.formula2);
+        btnForm2.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent form2Intent = new Intent(getApplicationContext(), Formula2.class);
+                startActivity(form2Intent);
+            }
+        }));
     }
 
 

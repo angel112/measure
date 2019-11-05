@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -22,12 +24,12 @@ public class Formula1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formula1);
 
-        Spinner spinner1 = (Spinner) findViewById(R.id.spinnerHeight);
+        final Spinner spinner1 = (Spinner) findViewById(R.id.spinnerHeight);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,R.array.units, android.R.layout.simple_spinner_dropdown_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(adapter1);
 
-        Spinner spinner2 = (Spinner) findViewById(R.id.spinnerCircumf);
+        final Spinner spinner2 = (Spinner) findViewById(R.id.spinnerCircumf);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,R.array.units, android.R.layout.simple_spinner_dropdown_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
@@ -46,25 +48,39 @@ public class Formula1 extends AppCompatActivity {
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                height = Double.parseDouble(heightText.getText().toString());
-                circumf = Double.parseDouble(circumfText.getText().toString());
-                diameter = circumf/3.14;
-                diameter = Math.round(diameter * 100000d) / 100000d;
-                radius = circumf/2;
-                radius = Math.round(radius * 100000d) / 100000d;
-                capacity = 3.14*radius*radius*height;
-                capacity = Math.round(capacity * 100000d) / 100000d;
-                String dia = "Diameter = "+ String.format("%.5g%n", diameter);
-                String rad = "Radius = "+ radius;
-                String cap = "Capacity = "+ capacity;
+                if((heightText.getText().toString().trim().length()>0) && (circumfText.getText().toString().trim().length()>0)) {
+                    height = Double.parseDouble(heightText.getText().toString());
+                    circumf = Double.parseDouble(circumfText.getText().toString());
+                    String unit1 = spinner1.getSelectedItem().toString();
+                    String unit2 = spinner2.getSelectedItem().toString();
+                    if(unit1.equals("mm")){
+                        height = height/10;
+                    }
+                    if(unit2.equals("mm")){
+                        circumf = circumf/10;
+                    }
+                    diameter = circumf/3.14;
+                    radius = diameter/2;
+                    capacity = 3.14*radius*radius*height;
+                    String dia = "Diameter = "+ String.format("%.3g", diameter);
+                    String rad = "Radius = "+ String.format("%.3g", radius) + " cm";
+                    String cap = "Capacity = "+ String.format("%.3g", capacity) + " cm";
 
-                cons1.setVisibility(View.VISIBLE);
-                cons2.setVisibility(View.VISIBLE);
-                cons3.setVisibility(View.VISIBLE);
-                cons4.setVisibility(View.VISIBLE);
-                textDiameter.setText(dia);
-                textRadius.setText(rad);
-                textCapacity.setText(cap);
+                    cons1.setVisibility(View.VISIBLE);
+                    cons2.setVisibility(View.VISIBLE);
+                    cons3.setVisibility(View.VISIBLE);
+                    cons4.setVisibility(View.VISIBLE);
+                    textDiameter.setText(dia + " cm");
+                    textRadius.setText(rad);
+                    textCapacity.setText(Html.fromHtml(cap+"<sup><small>3</small></sup>"));
+                }
+                else {
+                    String msg = "Enter Height and Circumference!!";
+                    Toast toast;
+                    toast = Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
             }
         });
 
