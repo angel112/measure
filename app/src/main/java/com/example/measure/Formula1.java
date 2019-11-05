@@ -40,6 +40,7 @@ public class Formula1 extends AppCompatActivity {
         final ConstraintLayout cons1 = (ConstraintLayout) findViewById(R.id.cons1);
         final ConstraintLayout cons2 = (ConstraintLayout) findViewById(R.id.cons2);
         final ConstraintLayout cons3 = (ConstraintLayout) findViewById(R.id.cons3);
+        final ConstraintLayout cons4 = (ConstraintLayout) findViewById(R.id.cons4);
         Button calculate = (Button) findViewById(R.id.calculate);
 
         calculate.setOnClickListener(new View.OnClickListener() {
@@ -48,15 +49,19 @@ public class Formula1 extends AppCompatActivity {
                 height = Double.parseDouble(heightText.getText().toString());
                 circumf = Double.parseDouble(circumfText.getText().toString());
                 diameter = circumf/3.14;
+                diameter = Math.round(diameter * 100000d) / 100000d;
                 radius = circumf/2;
+                radius = Math.round(radius * 100000d) / 100000d;
                 capacity = 3.14*radius*radius*height;
-                String dia = "Diameter = "+ diameter;
+                capacity = Math.round(capacity * 100000d) / 100000d;
+                String dia = "Diameter = "+ String.format("%.5g%n", diameter);
                 String rad = "Radius = "+ radius;
                 String cap = "Capacity = "+ capacity;
 
                 cons1.setVisibility(View.VISIBLE);
                 cons2.setVisibility(View.VISIBLE);
                 cons3.setVisibility(View.VISIBLE);
+                cons4.setVisibility(View.VISIBLE);
                 textDiameter.setText(dia);
                 textRadius.setText(rad);
                 textCapacity.setText(cap);
