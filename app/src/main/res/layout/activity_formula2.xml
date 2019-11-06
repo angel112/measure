@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F1A4B7"
+    android:background="#EBFAF7F7"
     tools:context=".Formula2">
 
     <ScrollView
@@ -40,6 +40,7 @@
                 android:fontFamily="@font/alfa_slab_one"
                 android:text="Formula 2"
                 android:textAlignment="center"
+                android:textColor="#0C0C0C"
                 android:textSize="36sp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,6 +57,7 @@
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/carter_one"
                     android:text="Enter Thickness"
+                    android:textColor="#0C0C0C"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +74,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="24dp"
-                    android:background="#684C5A53"
+                    android:background="#37C7C4C4"
                     android:ems="10"
                     android:fontFamily="@font/cherry_cream_soda"
                     android:inputType="number|textPersonName"
@@ -86,15 +88,16 @@
 
                 <Spinner
                     android:id="@+id/spinnerThick"
-                    android:layout_width="102dp"
-                    android:layout_height="36dp"
+                    android:layout_width="59dp"
+                    android:layout_height="38dp"
                     android:layout_marginEnd="24dp"
+                    android:background="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.857"
+                    app:layout_constraintHorizontal_bias="0.44"
                     app:layout_constraintStart_toEndOf="@id/editTextThickness"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.788" />
+                    app:layout_constraintVertical_bias="0.771" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,6 +114,7 @@
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/carter_one"
                     android:text="Enter Outer Diameter"
+                    android:textColor="#0C0C0C"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +130,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
-                    android:background="#684C5A53"
+                    android:background="#37C7C4C4"
                     android:ems="10"
                     android:fontFamily="@font/cherry_cream_soda"
                     android:inputType="number|textPersonName"
@@ -139,15 +143,16 @@
 
                 <Spinner
                     android:id="@+id/spinnerOutDia"
-                    android:layout_width="102dp"
-                    android:layout_height="36dp"
+                    android:layout_width="59dp"
+                    android:layout_height="38dp"
                     android:layout_marginEnd="24dp"
+                    android:background="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.857"
+                    app:layout_constraintHorizontal_bias="0.48"
                     app:layout_constraintStart_toEndOf="@id/editTextOutDiam"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.776" />
+                    app:layout_constraintVertical_bias="0.771" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -160,7 +165,7 @@
                     style="@android:style/Widget.DeviceDefault.Light.Button.Inset"
                     android:layout_width="231dp"
                     android:layout_height="55dp"
-                    android:background="#868C9EFF"
+                    android:background="#BCB388FF"
                     android:elevation="1sp"
                     android:fontFamily="@font/aladin"
                     android:text="Calculate"
@@ -197,7 +202,7 @@
                 android:id="@+id/cons1"
                 android:layout_width="match_parent"
                 android:layout_height="79dp"
-                android:background="#4BAAA3A3"
+                android:background="#37E2E0E0"
                 android:visibility="invisible"
                 tools:visibility="invisible">
 
@@ -221,7 +226,7 @@
                 android:id="@+id/cons2"
                 android:layout_width="match_parent"
                 android:layout_height="77dp"
-                android:background="#4BAAA3A3"
+                android:background="#37E2E0E0"
                 android:visibility="invisible"
                 tools:visibility="invisible">
 
@@ -246,7 +251,7 @@
                 android:id="@+id/cons3"
                 android:layout_width="match_parent"
                 android:layout_height="78dp"
-                android:background="#4BAAA3A3"
+                android:background="#37E2E0E0"
                 android:visibility="invisible"
                 tools:visibility="invisible">
 
