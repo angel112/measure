@@ -32,6 +32,11 @@ public class Formula2 extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
 
+        final Spinner spinner3 = (Spinner) findViewById(R.id.spinnerRes);
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,R.array.units, android.R.layout.simple_spinner_dropdown_item);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner3.setAdapter(adapter3);
+
         final EditText thickText = (EditText) findViewById(R.id.editTextThickness);
         final EditText outDiaText = (EditText) findViewById(R.id.editTextOutDiam);
         final TextView textInDia = (TextView) findViewById(R.id.viewInDia);
@@ -51,6 +56,7 @@ public class Formula2 extends AppCompatActivity {
                     outDiameter = Double.parseDouble(outDiaText.getText().toString());
                     String unit1 = spinner1.getSelectedItem().toString();
                     String unit2 = spinner2.getSelectedItem().toString();
+                    String unit3 = spinner3.getSelectedItem().toString();
                     if (unit1.equals("mm")) {
                         thickness /= 10;
                     }
@@ -61,10 +67,14 @@ public class Formula2 extends AppCompatActivity {
                     inDiameter = outDiameter - (2 * thickness);
                     workPressure = 2*(tensileStrength * thickness * eff) / (inDiameter * fos);
                     WP = workPressure / 14.22;
+                    if(unit3.equals("mm")){
+                        inDiameter *= 10;
+                        WP /= 100;
+                    }
 
-                    String iD = "Inner Diameter = " + String.format("%.5g", inDiameter) + " cm";
+                    String iD = "Inner Diameter = " + String.format("%.5g", inDiameter) + " " + unit3;
                     String wop = "Working Pressure = " + String.format("%.5g", workPressure) + " psi";
-                    String wp = "WP = " + String.format("%.5g", WP) + " kg/cm";
+                    String wp = "WP = " + String.format("%.5g", WP) + " kg/" + unit3;
 
                     cons1.setVisibility(View.VISIBLE);
                     cons2.setVisibility(View.VISIBLE);

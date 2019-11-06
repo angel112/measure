@@ -34,6 +34,11 @@ public class Formula1 extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
 
+        final Spinner spinner3 = (Spinner) findViewById(R.id.spinnerRes);
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this,R.array.units, android.R.layout.simple_spinner_dropdown_item);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner3.setAdapter(adapter3);
+
         final EditText heightText = (EditText) findViewById(R.id.editTextHeight);
         final EditText circumfText = (EditText) findViewById(R.id.editTextCircumf);
         final TextView textDiameter = (TextView) findViewById(R.id.viewDiameter);
@@ -53,26 +58,34 @@ public class Formula1 extends AppCompatActivity {
                     circumf = Double.parseDouble(circumfText.getText().toString());
                     String unit1 = spinner1.getSelectedItem().toString();
                     String unit2 = spinner2.getSelectedItem().toString();
+                    String unit3 = spinner3.getSelectedItem().toString();
                     if(unit1.equals("mm")){
                         height = height/10;
                     }
                     if(unit2.equals("mm")){
                         circumf = circumf/10;
                     }
+
                     diameter = circumf/3.14;
                     radius = diameter/2;
                     capacity = 3.14*radius*radius*height;
-                    String dia = "Diameter = "+ String.format("%.3g", diameter);
-                    String rad = "Radius = "+ String.format("%.3g", radius) + " cm";
-                    String cap = "Capacity = "+ String.format("%.3g", capacity) + " cm";
+                    capacity /= 1000;
+                    if(unit3.equals("mm")){
+                        diameter *= 10;
+                        radius *= 10;
+                    }
+                    String dia = "Diameter = "+ String.format("%.3g", diameter) + " " + unit3;
+                    String rad = "Radius = "+ String.format("%.3g", radius) + " "+ unit3;
+                    String cap = "Capacity = "+ String.format("%.3g", capacity) + " L";
+
 
                     cons1.setVisibility(View.VISIBLE);
                     cons2.setVisibility(View.VISIBLE);
                     cons3.setVisibility(View.VISIBLE);
                     cons4.setVisibility(View.VISIBLE);
-                    textDiameter.setText(dia + " cm");
+                    textDiameter.setText(dia);
                     textRadius.setText(rad);
-                    textCapacity.setText(Html.fromHtml(cap+"<sup><small>3</small></sup>"));
+                    textCapacity.setText(cap);
                 }
                 else {
                     String msg = "Enter Height and Circumference!!";
